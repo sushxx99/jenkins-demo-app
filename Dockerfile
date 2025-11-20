@@ -1,9 +1,9 @@
-FROM alpine
+FROM python:3-alpine
 
-RUN apk add --no-cache busybox-extras
+WORKDIR /app
 
-COPY index.html /www/index.html
+COPY index.html /app/index.html
 
 EXPOSE 8080
 
-CMD ["busybox", "httpd", "-f", "-p", "8080"]
+CMD ["python3", "-m", "http.server", "8080"]
